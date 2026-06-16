@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حاسبة معدل البكالوريا</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <h1>حاسبة معدل البكالوريا</h1>
+      <p>أدخل درجات المواد لحساب المعدل العام وعرض كشف النقاط مع إمكانية تحميله كملف PDF.</p>
+    </header>
+
+    <section class="panel">
+      <h2>البيانات الأساسية</h2>
+      <div class="form-row">
+        <label for="branchSelect">اختر الشعبة</label>
+        <select id="branchSelect">
+          <option value="">-- اختر شعبة --</option>
+          <option value="sciences-exp">علوم تجريبية</option>
+          <option value="math">رياضيات</option>
+          <option value="tech-math">تقني رياضي</option>
+          <option value="gestion-eco">تسيير واقتصاد</option>
+          <option value="langues">لغات أجنبية</option>
+          <option value="lettres-philo">آداب وفلسفة</option>
+        </select>
+      </div>
+
+      <div id="techBranchWrapper" class="form-row hidden">
+        <label for="techBranchSelect">فرع تقني رياضي</label>
+        <select id="techBranchSelect">
+          <option value="general">عام</option>
+          <option value="electrotechnique">هندسة كهربائية</option>
+          <option value="mecanique">هندسة آلية</option>
+          <option value="civil">هندسة مدنية</option>
+          <option value="procedes">هندسة الطرائق</option>
+        </select>
+      </div>
+
+      <div class="form-row toggle-row">
+        <label>
+          <input type="checkbox" id="amazighToggle">
+          إضافة مادة الأمازيغية
+        </label>
+      </div>
+    </section>
+
+    <section id="step-subjects" class="panel hidden">
+      <h2>المواد وادخال العلامات</h2>
+      <p>أدخل علامة كل مادة بين 0 و 20 ثم اضغط "حساب المعدل".</p>
+      <div class="table-wrap">
+        <table id="subjectsTable">
+          <thead>
+            <tr>
+              <th>المادة</th>
+              <th>المعامل</th>
+              <th>العلامة</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <button id="calcBtn" class="primary-btn">حساب المعدل</button>
+    </section>
+
+    <section id="resultSection" class="panel hidden">
+      <h2>كشف النقاط</h2>
+      <div id="pdfContent" class="pdf-card">
+        <div class="result-header">
+          <p><strong>الشعبة:</strong> <span id="pdfBranchName"></span></p>
+        </div>
+        <div class="table-wrap">
+          <table id="resultTable">
+            <thead>
+              <tr>
+                <th>المادة</th>
+                <th>المعامل</th>
+                <th>العلامة</th>
+                <th>النقاط</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="result-summary">
+          <p><strong>الإجمالي:</strong> <span id="totalsCell"></span></p>
+          <p><strong>المعدل:</strong> <span id="averageValue"></span></p>
+          <p id="statusBox" class="status-box"></p>
+        </div>
+      </div>
+      <div class="button-row">
+        <button id="downloadPdfBtn" class="secondary-btn">تنزيل كملف PDF</button>
+        <button id="recalcBtn" class="secondary-btn">تعديل العلامات</button>
+        <button id="resetBtn" class="secondary-btn">شعبة جديدة</button>
+      </div>
+    </section>
+
+    <p id="errorMessage" class="error-message"></p>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
